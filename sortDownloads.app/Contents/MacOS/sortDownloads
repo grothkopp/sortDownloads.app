@@ -1,0 +1,37 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ cd "$( dirname "${BASH_SOURCE[0]}" )"
+
+
+
+# uninstall
+if [ -d ~/Library/sortDownloads ]
+then
+OK=$(osascript -e "tell application \"System Events\" to display dialog \"UNINSTALL sortDownloads?\" ")
+fi
+
+if [[ "$OK" == *OK ]]
+then
+ echo "Uninstalling"
+ launchctl unload ~/Library/LaunchAgents/sortDownloads.plist
+ rm -rf ~/Library/sortDownloads 
+
+else 
+
+# install
+if [ ! -d ~/Library/sortDownloads ]
+then
+OK=$(osascript -e "tell application \"System Events\" to display dialog \"Install sortDownloads?\" ")
+fi
+
+if [[ "$OK" == *OK ]]
+then
+ echo "Installing"
+ mkdir ~/Library/sortDownloads 
+ cp sort.sh ~/Library/sortDownloads/
+ cat sortDownloads.plist |sed "s#~#$HOME#" > ~/Library/LaunchAgents/sortDownloads.plist
+ launchctl load ~/Library/LaunchAgents/sortDownloads.plist
+fi
+
+fi
