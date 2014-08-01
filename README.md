@@ -3,7 +3,7 @@
 sortDownloads.app is a very small Mac OS X app that will sort your ~/Downloads folder automatically.
 Every file will be moved to a directory named like the domain of the website you downloaded it from.
 
-Example: if you Download the zip file from this site it will be moved to ~/Downloads/github.com/
+Example: if you download the zip file from this site it will be moved to ~/Downloads/github.com/
 
 
 ##Usage
