@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILES=~/Downloads/*
+FILES=$(find ~/Downloads/ -type f -maxdepth 1)
 DIR=~/Downloads/
 
 for f in $FILES
